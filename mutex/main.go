@@ -4,6 +4,10 @@ import (
 	"time"
 )
 
+const (
+	GroupSize = 100
+)
+
 var (
 	global int
 )
@@ -59,7 +63,7 @@ type P struct {
 
 func NewP(id int) {
 	p := &P{
-		In: make(chan Event, 1),
+		In: make(chan Event, GroupSize),
 		ID: id,
 		TS: time.Now().Unix(),
 		ST: NORMAL,
